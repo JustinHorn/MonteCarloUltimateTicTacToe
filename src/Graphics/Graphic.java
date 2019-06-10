@@ -10,7 +10,9 @@ import javax.swing.*;
 import Board.Board;
 import monte_carlo.MonteCarlo;
 import monte_carlo.Move;
+import monte_carlo.Utils;
 import tree.Root;
+import tree.TreeUtils;
 
 
 
@@ -19,11 +21,10 @@ public class Graphic extends JFrame {
 	private PaintPanel[][] paintPanel;
 	private Board field;
 	private boolean doesComputerPlay = true;
-	private boolean PcFightsPc = false;
+	private boolean PcFightsPc = true;
 	private long ai_time_millis = 100;
 	private ArrayList<Move> remember_moves;
-	
-	MonteCarlo ai;
+	private Root root;
 	
 	public static void main(String[] args) {
 		new Graphic();
@@ -33,8 +34,11 @@ public class Graphic extends JFrame {
 		remember_moves = new ArrayList<Move>();
 		field = new Board();
 		setUpJFrame();
-		ai = new MonteCarlo();
-		doPCMove();
+		root = new Root();
+		root.setChildren(Utils.getAvailableMoves(field));
+		while(PcFightsPc) { 
+			doPCMove();
+		}
 		
 	}
 
@@ -170,13 +174,14 @@ public class Graphic extends JFrame {
 	private void doPCMove() {
 		if(remember_moves.size() > 0) {
 			for(int i = 0; i <remember_moves.size();i++) { 
-				if(ai.treeHasChild_withMove(remember_moves.get(i))) {
-					ai.expandTree(remember_moves.get(i));
+				if(root.hasChild_withMove(remember_moves.get(i))) {
+					root = TreeUtils.expandTree(root,remember_moves.get(i));
 				}
 			}
 			remember_moves.removeAll(remember_moves);
 		}
-		Move move = ai.calcMove(field,ai_time_millis); 
+		root = MonteCarlo.calcMove(field,root,ai_time_millis); 
+		Move move = TreeUtils.getChild_with_mostSimulations(root).getMove();
 		make_move(move);
 		
 		System.out.println(move);

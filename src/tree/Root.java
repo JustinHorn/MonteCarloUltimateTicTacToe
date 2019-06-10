@@ -53,15 +53,6 @@ public class Root  {
 		}
 	}
 	
-	public Node getChild_with_mostSimulations() {
-		if (child != null) {
-				Arrays.sort(child, new CompareSimulationCount());
-				return child[child.length-1];
-			
-		} 
-		throw new IllegalAccessError("Children have not been assinged!");
-
-	}
 	
 	public boolean hasChild_withMove(Move m) {
 		if (child == null) {
@@ -91,38 +82,27 @@ public class Root  {
 		}
 	}
 	
-	public Node setChildren_and_getRandomChild(Move[] moves) {
-		child = new Node[moves.length];
-		for (int i = 0; i < child.length; i++) {
-			child[i] = new Node(this, moves[i]);
+	public void setChildren(Move[] moves) {
+		if(moves.length > 0) {
+			child = new Node[moves.length];
+			for (int i = 0; i < child.length; i++) {
+				child[i] = new Node(this, moves[i]);
+			}
+		} else {
+			throw new IllegalArgumentException("No moves given!");
 		}
-		if(child.length > 0) {
+	}
+	
+	public Node getRandomChild() {
+		if(hasChildren()) {
 			int index = (int)(child.length*Math.random());
 			return child[index];
-		} else {
-			return (Node) this;
-		}
+		} 
+		throw new IllegalArgumentException("Thsi Node has no children!");
 	}
 	
 	public void changeScore_and_simulationCount_of_MeAndParent(int winLooseOrDraw) {
 		simulationCount++;
-	}
-	
-	
-	public Node getChild_with_highestValue() {
-		if(child == null) {
-			throw new NullPointerException("Children have not been assinged!");
-		}
-		if(child.length > 0) {
-			long time = System.currentTimeMillis();
-			for(int i = 0; i < child.length;i++) {
-				child[i].calcValue(time);
-			}
-			Arrays.sort(child, new CompareValue());
-			return child[child.length-1];
-		} else {
-			return (Node) this;
-		}
 	}
 }
 

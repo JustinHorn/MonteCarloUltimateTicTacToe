@@ -25,15 +25,6 @@ public class Node extends Root{
 		}
 	}
 	
-	public Root this_to_Root() {
-		Root root = new Root(getSimulationCount());
-		if(childrenAssigned()) {
-			root.setChildren(getChildren());
-		}
-		return root;
-		
-	}
-	
 	public void setParent(Root parent) {
 		this.parent = parent;
 	}
@@ -68,13 +59,6 @@ public class Node extends Root{
 	public Move getMove() {
 		return move;
 	}
-
-	@Override
-	public Node getChild_with_mostSimulations() {
-		throw new IllegalAccessError("You should not use this");
-
-	}
-
 
 }
 

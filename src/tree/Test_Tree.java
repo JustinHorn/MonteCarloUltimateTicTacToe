@@ -21,7 +21,8 @@ public class Test_Tree {
 		Board b = new Board();
 		Root root = new Root();
 		
-		Node random_child = root.setChildren_and_getRandomChild(Utils.getAvailableMoves(b));
+		root.setChildren(Utils.getAvailableMoves(b));
+		Node random_child = root.getRandomChild();
 		assertEquals(root,random_child.getParent());
 	}
 	
@@ -30,10 +31,12 @@ public class Test_Tree {
 		Board b = new Board();
 		Root root = new Root();
 		
-		Node random_child = root.setChildren_and_getRandomChild(Utils.getAvailableMoves(b));
+		root.setChildren(Utils.getAvailableMoves(b));
+		Node random_child = root.getRandomChild();
 		b.makeMove(random_child.getMove());
 		
-		Node childOf_randomChild = random_child.setChildren_and_getRandomChild(Utils.getAvailableMoves(b));
+		random_child.setChildren(Utils.getAvailableMoves(b));
+		Node childOf_randomChild = random_child.getRandomChild();
 		
 		childOf_randomChild.changeScore_and_simulationCount_of_MeAndParent(b.O);
 		
@@ -41,49 +44,6 @@ public class Test_Tree {
 		assertEquals(1,childOf_randomChild.getScore());
 	}
 	
-	@Test
-	void test_getBestChild_and_mostSimulations() {
-		Board b = new Board();
-		Root root = new Root();
-		
-		Node random_child = root.setChildren_and_getRandomChild(Utils.getAvailableMoves(b));
-		random_child.changeScore_and_simulationCount_of_MeAndParent(b.X);
-
-		assertEquals(random_child,root.getChild_with_highestValue());
-		assertEquals(random_child,root.getChild_with_mostSimulations());
-		
-		random_child.changeScore_and_simulationCount_of_MeAndParent(b.O);
-		assertTrue(random_child != root.getChild_with_highestValue());
-		assertEquals(random_child,root.getChild_with_mostSimulations());
-		
-	}
-	
-
-	@Test
-	void test_Node_thistoTree() {
-		Move lvl1 = new Move(1,2,3);
-		Move lvl2 = new Move(1,2,4);
-		Root root = setUptree_with_hightOfTwo(lvl1,lvl2);
-		
-		assertEquals(true,root.hasChild_withMove(lvl1));
-		Node child1 = root.getChild_withMove(lvl1);
-		
-		
-		assertEquals(lvl1,child1.getMove());
-		assertEquals(true,child1.hasChild_withMove(lvl2));
-
-		root = child1.this_to_Root();
-		
-		assertEquals(true,root.hasChild_withMove(lvl2));
-
-	}
-	
-	private Root setUptree_with_hightOfTwo(Move m1,Move m2) {
-		Root root = new Root();
-		Node randomChild = root.setChildren_and_getRandomChild(new Move[]{m1});
-		randomChild.setChildren_and_getRandomChild(new Move[] {m2});
-		return root;
-	}
 	
 	@Test
 	void test_Node_setChildren() {
