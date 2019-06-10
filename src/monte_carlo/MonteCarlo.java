@@ -1,9 +1,6 @@
 package monte_carlo;
-
-import Board.Board;
-import tree.Node;
-import tree.Root;
-import tree.TreeUtils;
+import monte_carlo.board.Board;
+import monte_carlo.tree.*;
 
 public class MonteCarlo {
 	

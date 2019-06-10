@@ -8,12 +8,12 @@ import java.util.Collections;
 
 import org.junit.jupiter.api.Test;
 
-import Board.Board;
-import Board.Test_Board;
 import monte_carlo.*;
-import tree.Node;
-import tree.Root;
-import tree.TreeUtils;
+import monte_carlo.board.Board;
+import monte_carlo.board.Test_Board;
+import monte_carlo.tree.Node;
+import monte_carlo.tree.Root;
+import monte_carlo.tree.TreeUtils;
 
 
 public class Test_Utils {

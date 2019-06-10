@@ -1,4 +1,4 @@
-package Graphics;
+
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -7,7 +7,7 @@ import java.awt.Graphics2D;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
-import Board.Board;
+import monte_carlo.board.Board;
 
 
 /**

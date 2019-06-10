@@ -1,4 +1,4 @@
-package tree;
+package monte_carlo.tree;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -9,10 +9,10 @@ import java.util.Collections;
 
 import org.junit.jupiter.api.Test;
 
-import Board.Board;
 import monte_carlo.MonteCarlo;
 import monte_carlo.Move;
 import monte_carlo.Utils;
+import monte_carlo.board.Board;
 
 public class Test_TreeUtils {
 	
@@ -139,7 +139,7 @@ public class Test_TreeUtils {
 		b.makeMove(new Move(0,0,17));
 		
 		try {
-			MonteCarlo.calcMove(b,root,1);
+			TreeUtils.doesTreeMatchBoard(root, b);
 			fail("Made move without error");
 		} catch (Exception e) {
 

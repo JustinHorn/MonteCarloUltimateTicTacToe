@@ -4,11 +4,10 @@ import static org.junit.Assert.fail;
 
 import org.junit.jupiter.api.Test;
 
-import Board.Board;
-import monte_carlo.*;
-import tree.Node;
-import tree.Root;
-import tree.TreeUtils;
+import monte_carlo.board.Board;
+import monte_carlo.tree.Node;
+import monte_carlo.tree.Root;
+import monte_carlo.tree.TreeUtils;
 
 
 public class Test_MonteCarlo {

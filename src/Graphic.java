@@ -1,4 +1,4 @@
-package Graphics;
+
 
 import java.awt.GridLayout;
 import java.awt.event.MouseEvent;
@@ -7,12 +7,12 @@ import java.util.ArrayList;
 
 import javax.swing.*;
 
-import Board.Board;
 import monte_carlo.MonteCarlo;
 import monte_carlo.Move;
 import monte_carlo.Utils;
-import tree.Root;
-import tree.TreeUtils;
+import monte_carlo.board.Board;
+import monte_carlo.tree.Root;
+import monte_carlo.tree.TreeUtils;
 
 
 

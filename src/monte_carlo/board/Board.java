@@ -1,4 +1,4 @@
-package Board;
+package monte_carlo.board;
 
 import java.util.ArrayList;
 

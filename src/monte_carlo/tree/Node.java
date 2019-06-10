@@ -1,6 +1,6 @@
-package tree;
-import Board.Board;
+package monte_carlo.tree;
 import monte_carlo.Move;
+import monte_carlo.board.Board;
 
 public class Node extends Root{
 	private int score;

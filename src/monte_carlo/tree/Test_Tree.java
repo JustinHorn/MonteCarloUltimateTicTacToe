@@ -1,11 +1,11 @@
-package tree;
+package monte_carlo.tree;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
-import Board.Board;
 import monte_carlo.*;
+import monte_carlo.board.Board;
 
 
 public class Test_Tree {

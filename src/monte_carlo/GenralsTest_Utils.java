@@ -2,7 +2,7 @@ package monte_carlo;
 
 import static org.junit.jupiter.api.Assertions.fail;
 
-import Board.Board;
+import monte_carlo.board.Board;
 
 public class GenralsTest_Utils {
 	public static void failure_if_sth_isDifferent(Board oldBoard, Board newBoard) {

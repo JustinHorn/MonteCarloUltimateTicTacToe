@@ -1,14 +1,10 @@
 package monte_carlo;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
-import java.util.HashSet;
-import java.util.stream.Collectors;
 
-import Board.Board;
-import tree.Node;
-import tree.Root;
-import tree.TreeUtils;
+import monte_carlo.board.Board;
+import monte_carlo.tree.Node;
+import monte_carlo.tree.TreeUtils;
 
 public class Utils {
 

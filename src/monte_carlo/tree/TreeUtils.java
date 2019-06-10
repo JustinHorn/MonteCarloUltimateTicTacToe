@@ -1,11 +1,11 @@
-package tree;
+package monte_carlo.tree;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
-import Board.Board;
 import monte_carlo.Move;
+import monte_carlo.board.Board;
 
 public class TreeUtils {
 
