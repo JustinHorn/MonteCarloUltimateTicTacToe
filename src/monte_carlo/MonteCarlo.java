@@ -1,4 +1,5 @@
 package monte_carlo;
+
 import monte_carlo.board.Board;
 import monte_carlo.tree.*;
 
@@ -20,7 +21,7 @@ public class MonteCarlo {
 	}
 
 	
-	private static void monteCarloAlgorithm(Board board,Root root, long duration) {
+	private static void monteCarloAlgorithm(Board board,Root root, long duration) { 
 		long time = System.currentTimeMillis();
 		while (System.currentTimeMillis() - time < duration) {			
 			expand_advance_simulate(board,root);			
@@ -45,7 +46,7 @@ public class MonteCarlo {
 			youngestChild.changeScore_and_simulationCount_of_MeAndParent(outcome);
 		}
 	}
-
+	
 
 	
 	

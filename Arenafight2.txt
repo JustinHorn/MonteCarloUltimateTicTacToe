@@ -1,0 +1,40 @@
+5000, Narrow score: 15 scoreX: 8 scoreO: 7 games: 18
+1000, Narrow score: 10 scoreX: 4 scoreO: 6 games: 18
+5000, Standard score: 6 scoreX: 2 scoreO: 4 games: 18
+1000, Standard score: 5 scoreX: 2 scoreO: 3 games: 18
+X: 1000, Narrow   O: 5000, Narrow result: X
+X: 1000, Narrow   O: 5000, Narrow result: X
+X: 1000, Narrow   O: 5000, Narrow result: O
+X: 1000, Narrow   O: 1000, Standard result: X
+X: 1000, Narrow   O: 1000, Standard result: X
+X: 1000, Narrow   O: 1000, Standard result: O
+X: 1000, Narrow   O: 5000, Standard result: O
+X: 1000, Narrow   O: 5000, Standard result: O
+X: 1000, Narrow   O: 5000, Standard result: O
+X: 5000, Narrow   O: 1000, Narrow result: X
+X: 5000, Narrow   O: 1000, Narrow result: X
+X: 5000, Narrow   O: 1000, Narrow result: X
+X: 5000, Narrow   O: 1000, Standard result: X
+X: 5000, Narrow   O: 1000, Standard result: X
+X: 5000, Narrow   O: 1000, Standard result: O
+X: 5000, Narrow   O: 5000, Standard result: X
+X: 5000, Narrow   O: 5000, Standard result: X
+X: 5000, Narrow   O: 5000, Standard result: X
+X: 1000, Standard   O: 1000, Narrow result: O
+X: 1000, Standard   O: 1000, Narrow result: O
+X: 1000, Standard   O: 1000, Narrow result: O
+X: 1000, Standard   O: 5000, Narrow result: O
+X: 1000, Standard   O: 5000, Narrow result: O
+X: 1000, Standard   O: 5000, Narrow result: O
+X: 1000, Standard   O: 5000, Standard result: O
+X: 1000, Standard   O: 5000, Standard result: X
+X: 1000, Standard   O: 5000, Standard result: X
+X: 5000, Standard   O: 1000, Narrow result: O
+X: 5000, Standard   O: 1000, Narrow result: O
+X: 5000, Standard   O: 1000, Narrow result: O
+X: 5000, Standard   O: 5000, Narrow result: O
+X: 5000, Standard   O: 5000, Narrow result: O
+X: 5000, Standard   O: 5000, Narrow result: O
+X: 5000, Standard   O: 1000, Standard result: O
+X: 5000, Standard   O: 1000, Standard result: X
+X: 5000, Standard   O: 1000, Standard result: X

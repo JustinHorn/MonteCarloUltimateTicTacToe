@@ -2,6 +2,7 @@ package monte_carlo.tree;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.stream.Collectors;
 
 import monte_carlo.Move;
@@ -96,3 +97,35 @@ public class TreeUtils {
 		return moves.toArray(new Move[moves.size()]);
 	}
 }
+final class CompareSimulationCount implements Comparator<Node>{
+
+	@Override
+	public int compare(Node node1, Node node2) {
+		if(node1.getSimulationCount() < node2.getSimulationCount()) {
+			return -1;
+		} else if(node1.getSimulationCount() > node2.getSimulationCount()) {
+			return 1;
+		} else {
+			return 0;
+		}
+	}
+	
+}
+
+
+final class CompareValue implements Comparator<Node>{
+
+	@Override
+	public int compare(Node node1, Node node2) {
+		if(node1.getValue() < node2.getValue()) {
+			return -1;
+		} else if(node1.getValue() > node2.getValue()) {
+			return 1;
+		} else {
+			return 0;
+		}
+	}
+	
+}
+
+

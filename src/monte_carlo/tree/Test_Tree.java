@@ -50,7 +50,7 @@ public class Test_Tree {
 		Move lvl1 = new Move(1,2,3);
 		Root root = new Root();
 		Root root2 = new Root();
-		Node m1 = new Node(root2,lvl1);
+		Node m1 = new Node(root2,lvl1, (x,y,z)->(1));
 
 		root.setChildren(new Node[] {m1});
 		assertEquals(root,m1.getParent());
@@ -62,7 +62,7 @@ public class Test_Tree {
 		Move lvl1 = new Move(1,2,3);
 		Root root = new Root();
 		Root root2 = new Root();
-		Node m1 = new Node(root2,lvl1);
+		Node m1 = new Node(root2,lvl1,(x,y,z)->x);
 
 		m1.setParent(root);
 		assertEquals(root,m1.getParent());

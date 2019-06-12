@@ -9,15 +9,50 @@ public class Root  {
 	private int simulationCount;
 	private long startingTime;
 	protected Node[] child = null;  
-	
+	protected Value_function f;
 
-	public Root(int sC) {
+	public Root(int sC,Value_function f) {
+		errorhandling(f);
 		simulationCount = sC;
+		this.f = f;
 		this.startingTime = System.currentTimeMillis();
 	}
 	
-	public Root() {
+	public Root(int sC) {
+		simulationCount = sC;
+		init_value_function();
+		this.startingTime = System.currentTimeMillis();
+	}
+	
+	public Root(Value_function f) {
+		errorhandling(f);
+		this.f = f;
 		startingTime = System.currentTimeMillis();
+	}
+	public Root() {
+		init_value_function();
+		startingTime = System.currentTimeMillis();
+	}
+	
+	private void errorhandling(Value_function f) {
+		if(f == null) {
+			throw new IllegalArgumentException("Value_function is null");
+		}
+	}
+	
+	private void init_value_function() {
+		f = new Value_function () {
+				public double calcValue(long time,int score,int simulationCount) {
+					if(simulationCount == 0) {
+						return Math.log10(Math.sqrt(System.currentTimeMillis()+1-time));
+					} else {
+						return ((double) score)/simulationCount+ Math.log10(Math.sqrt(System.currentTimeMillis()+1-time)/simulationCount);
+					}
+				}
+				public String getName() {
+					return "Standard";
+				}
+			};
 	}
 	
 	public boolean childrenAssigned() {
@@ -52,10 +87,18 @@ public class Root  {
 			}
 		}
 	}
+	public void setValue_function(Value_function f) {
+		this.f = f;
+		if(childrenAssigned()) {
+			for(int i = 0; i < child.length;i++) {
+				child[i].setValue_function(f);
+			}
+		}
+	}
 	
 	
 	public boolean hasChild_withMove(Move m) {
-		if (child == null) {
+		if (!childrenAssigned()) {
 			return false;
 		}
 		for(int i = 0; i < child.length;i++) {
@@ -86,7 +129,7 @@ public class Root  {
 		if(moves.length > 0) {
 			child = new Node[moves.length];
 			for (int i = 0; i < child.length; i++) {
-				child[i] = new Node(this, moves[i]);
+				child[i] = new Node(this, moves[i], f);
 			}
 		} else {
 			throw new IllegalArgumentException("No moves given!");
@@ -106,33 +149,3 @@ public class Root  {
 	}
 }
 
-final class CompareSimulationCount implements Comparator<Node>{
-
-	@Override
-	public int compare(Node node1, Node node2) {
-		if(node1.getSimulationCount() < node2.getSimulationCount()) {
-			return -1;
-		} else if(node1.getSimulationCount() > node2.getSimulationCount()) {
-			return 1;
-		} else {
-			return 0;
-		}
-	}
-	
-}
-
-
-final class CompareValue implements Comparator<Node>{
-
-	@Override
-	public int compare(Node node1, Node node2) {
-		if(node1.getValue() < node2.getValue()) {
-			return -1;
-		} else if(node1.getValue() > node2.getValue()) {
-			return 1;
-		} else {
-			return 0;
-		}
-	}
-	
-}

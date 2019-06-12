@@ -2,27 +2,22 @@ package monte_carlo.tree;
 import monte_carlo.Move;
 import monte_carlo.board.Board;
 
+
 public class Node extends Root{
 	private int score;
 	private Move move;
 	private Root parent;
 	private double value;
 	
-	public Node(Root parent, Move move) {
-		super();
+	public Node(Root parent, Move move,Value_function f) {
+		super(f);
 		score = 0;
 		this.parent = parent;
 		this.move = move;
 	}
 
 	public void calcValue(long time) {
-		/*Apperently it can happen that this function is executed in the same millisecond the object etc. got created. Therefor +1*/
-		if (getSimulationCount() > 0) {
-			value = ((double) score) / getSimulationCount()
-					+2* Math.log10(Math.sqrt(time+1 - getStartTime()) / getSimulationCount());
-		} else {
-			value = +2* Math.log10( Math.sqrt(time+1 -  getStartTime()));
-		}
+		value = f.calcValue(time,score, getSimulationCount());
 	}
 	
 	public void setParent(Root parent) {

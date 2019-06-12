@@ -21,7 +21,7 @@ public class Graphic extends JFrame {
 	private PaintPanel[][] paintPanel;
 	private Board field;
 	private boolean doesComputerPlay = true;
-	private boolean PcFightsPc = true;
+	private boolean PcFightsPc = false;
 	private long ai_time_millis = 100;
 	private ArrayList<Move> remember_moves;
 	private Root root;
@@ -172,15 +172,15 @@ public class Graphic extends JFrame {
 	
 
 	private void doPCMove() {
-		if(remember_moves.size() > 0) {
+		/**if(remember_moves.size() > 0) {
 			for(int i = 0; i <remember_moves.size();i++) { 
 				if(root.hasChild_withMove(remember_moves.get(i))) {
 					root = TreeUtils.expandTree(root,remember_moves.get(i));
 				}
 			}
 			remember_moves.removeAll(remember_moves);
-		}
-		root = MonteCarlo.calcMove(field,root,ai_time_millis); 
+		}*/
+		root = MonteCarlo.calcMove(field,ai_time_millis); 
 		Move move = TreeUtils.getChild_with_mostSimulations(root).getMove();
 		make_move(move);
 		
