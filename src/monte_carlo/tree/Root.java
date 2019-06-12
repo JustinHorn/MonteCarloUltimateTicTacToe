@@ -44,13 +44,13 @@ public class Root  {
 		f = new Value_function () {
 				public double calcValue(long time,int score,int simulationCount) {
 					if(simulationCount == 0) {
-						return Math.log10(Math.sqrt(System.currentTimeMillis()+1-time));
+						return 0.5*Math.log10(Math.sqrt(System.currentTimeMillis()+1-time));
 					} else {
-						return ((double) score)/simulationCount+ Math.log10(Math.sqrt(System.currentTimeMillis()+1-time)/simulationCount);
+						return ((double) score)/simulationCount+ 0.5*Math.log10(Math.sqrt(System.currentTimeMillis()+1-time)/simulationCount);
 					}
 				}
 				public String getName() {
-					return "Standard";
+					return "Narrow";
 				}
 			};
 	}
