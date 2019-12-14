@@ -18,11 +18,13 @@ import monte_carlo.tree.TreeUtils;
 
 public class Graphic extends JFrame {
 
+	
+	private static final long serialVersionUID = 1L;
 	private PaintPanel[][] paintPanel;
 	private Board field;
 	private boolean doesComputerPlay = true;
 	private boolean PcFightsPc = false;
-	private long ai_time_millis = 100;
+	private long ai_time_millis = 1000;
 	private ArrayList<Move> remember_moves;
 	private Root root;
 	
@@ -36,6 +38,7 @@ public class Graphic extends JFrame {
 		setUpJFrame();
 		root = new Root();
 		root.setChildren(Utils.getAvailableMoves(field));
+		doPCMove();
 		while(PcFightsPc) { 
 			doPCMove();
 		}

@@ -44,7 +44,7 @@ public class Test_Tree {
 		assertEquals(1,childOf_randomChild.getScore());
 	}
 	
-	
+	/*
 	@Test
 	void test_Node_setChildren() {
 		Move lvl1 = new Move(1,2,3);
@@ -66,7 +66,7 @@ public class Test_Tree {
 
 		m1.setParent(root);
 		assertEquals(root,m1.getParent());
-	}
+	}*/
 	
 	
 	

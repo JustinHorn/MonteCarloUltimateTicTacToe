@@ -1,0 +1,39 @@
+html {
+    height:100%; 
+  
+    width:100%;
+}
+
+body {
+    margin-left: 20%;
+    font-family: 'Roboto Mono', monospace;
+    background-color:rgb(243,239,227);
+    display:flex;
+    flex-direction: column;
+    align-content: center;
+}
+
+body > div {
+    width: 70%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.images {
+    width: 80%;
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr; 
+}
+
+.images > img{
+    height: 350px;
+    width: 350px;
+    background-size:contain; /*they shall not overlap */
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+
+
+

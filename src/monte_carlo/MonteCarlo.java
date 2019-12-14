@@ -33,21 +33,28 @@ public class MonteCarlo {
 	private static void expand_advance_simulate(Board board,Root root) {
 		Node youngestChild = TreeUtils.expandTree(root);
 		Board board_atYoungestChild = Utils.advanceBoard(board, youngestChild);
-		Move[] moves = Utils.getAvailableMoves(board_atYoungestChild);
 
-		if (moves.length > 0) {
-			youngestChild.setChildren(moves);
-			Node randomChild = youngestChild.getRandomChild();
-			board_atYoungestChild.makeMove(randomChild.getMove());
-			int outcome = Utils.simulateRandomGame(board_atYoungestChild);
-			randomChild.changeScore_and_simulationCount_of_MeAndParent(outcome);
+		if (board_atYoungestChild.isOngoing()) {
+			advance_simulate_update(youngestChild,board_atYoungestChild);
 		} else {
-			int outcome = Utils.simulateRandomGame(board_atYoungestChild);
-			youngestChild.changeScore_and_simulationCount_of_MeAndParent(outcome);
+			youngestChild.changeScore_and_simulationCount_of_MeAndParent(board_atYoungestChild.whoHasWon());
 		}
 	}
 	
-
+	private static void advance_simulate_update(Node youngestChild,Board board_atYoungestChild) {
+		Node randomChild = advance_child(board_atYoungestChild,youngestChild);
+		board_atYoungestChild.makeMove(randomChild.getMove());
+		int outcome = Utils.simulateRandomGame(board_atYoungestChild);
+		randomChild.changeScore_and_simulationCount_of_MeAndParent(outcome);
+	}
+	
+	private static Node advance_child(Board board_atYoungestChild,Node youngestChild) {
+		Move[] moves = Utils.getAvailableMoves(board_atYoungestChild);
+		youngestChild.setChildren(moves);
+		return youngestChild.getRandomChild();
+	}
+	
+	
 	
 	
 }
