@@ -1,3 +1,3 @@
 ## Ultimate TicTacToe
 
-Play ultimateTicTacToe against Monte Carlo algorithm.
+Play ultimateTicTacToe against a monte carlo algorithm based AI.
